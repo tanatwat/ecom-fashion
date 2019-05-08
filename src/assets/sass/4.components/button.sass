@@ -1,0 +1,81 @@
+button
+   cursor: pointer
+   outline: none
+   
+.button
+  padding: 10px 20px
+  border-radius: 8px
+  background-color: #c4c4c4
+  color: #fff
+  -webkit-transition: all 200ms ease
+  transition: all 200ms ease
+  &:hover
+    background-color: darken(#c4c4c4, 10%)
+  &.primary
+    background-color: $primary
+    &:hover, &:active
+      background-color: darken($primary, 10%)
+  &.success
+    background-color: $success
+    &:hover, &:active
+      background-color: darken($success, 10%)
+  &.error
+    background-color: $error
+    &:hover, &:active
+      background-color: darken($error, 10%)
+  &.warning
+    background-color: $warning
+    &:hover, &:active
+      background-color: darken($warning, 10%)
+  &.icon
+    font-size: large
+    padding: 10px
+    background-color: transparent
+    color: #c4c4c4
+    &:hover, &:focus, &:active, &.active
+      color: lighten($primary, 3%)
+  &.secondary
+    background-color: hsla(21.63934, 34.25%, 60.46%, 1)
+
+.checkbox
+  color: #3273dc
+  cursor: pointer
+  font-size: 1.1rem
+  &:hover
+    color: #0099ff !important
+  &::after
+    font-family: 'Font Awesome 5 Free'
+    font-weight: 400
+    content: '\f0c8'
+  input
+    display: none
+  &.active
+    color: #6dc55a
+  &.active::after
+    font-family: 'Font Awesome 5 Free'
+    font-weight: 400
+    content: '\f14a'
+  &.padding
+    padding: 10px 0
+
+.action-wrapper
+  display: flex
+  &.right
+    justify-content: flex-end
+  &.left
+    justify-content: flex-start
+  &.between
+    justify-content: space-between
+  &.v-center
+    align-items: center
+  &.form-submit
+    margin-top: 15px
+  &.has-margin > *
+    margin: 0 5px
+    &:last-child
+      margin-right: 0
+  &.action
+    padding: 8px 0
+    > *
+      margin: 0 5px
+      padding: 0 5px

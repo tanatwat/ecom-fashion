@@ -1,0 +1,131 @@
+$m-width: 180px
+$m-height: 180px
+$width: 200px
+$height: 200px
+
+$card-border: none
+$card-shadow: 0 2px 3px #ddd, 0 0 0 1px #eee
+$product-link: $link
+$product-details-bg: transparent
+
+.product-grid
+  display: grid
+  width: 100%
+  justify-items: center
+  grid-gap: 10px
+  grid-template-columns: repeat(auto-fill, minmax($m-height, 1fr))
+  > *
+     max-width: $m-width
+
+.product-row
+  display: flex
+  flex-direction: column
+
+@media(min-width: 768px)
+  .product-grid
+    display: grid
+    width: 100%
+    justify-items: center
+    grid-gap: 10px
+    grid-template-columns: repeat(auto-fill, minmax($height, 1fr))
+    > *
+       max-width: $width
+
+.product-img-wrapper 
+  position: relative
+  > img
+    width: 100%
+    height: 100%
+    padding: 1px
+    max-height: $m-height
+    object-fit: contain
+
+.product-card
+  position: relative
+  .product-card-sub
+    align-self: center
+
+.product-row
+  .product-card
+    display: flex
+    padding: 6px 0
+    border-bottom: 1px solid #dedede
+    &:first-child
+      border-top: 1px solid #dedede
+  .product-img-wrapper   
+    min-width: 80px
+    width: 80px
+    height: 80px
+    margin-right: 10px
+  .product-action-wrapper
+    display: flex
+    padding: 5px 0
+    > *
+      margin-right: 10px
+    > *:not(:first-child)
+      margin-left: 10px
+
+.product-grid
+  .product-img-wrapper
+    width: 100%
+    background: #fff
+    position: relative
+  .product-card
+    width: 100%
+    border: $card-border
+    box-shadow: $card-shadow
+  .product-details-wrapper
+    background-color: $product-details-bg
+    &.centered
+      text-align: center
+  .product-detail
+    padding: 2px 8px
+    font-size: 1em
+    &.discount
+      color: #61b62f
+  .product-action-wrapper
+    padding: 5px 0
+    background-color: transparent
+    text-align: right
+    > *
+      padding: 5px 0 !important
+      margin: 0 10px
+
+.product-grid,.product-row
+  .product-link
+    cursor: pointer
+    display: block
+    color: $product-link
+    font-size: 1.1rem
+    text-decoration: none
+    text-overflow: ellipsis
+    overflow: hidden
+    &:hover
+      color: darken($product-link, 10%)  
+    &.centered
+      text-align: center
+
+.product-grid
+  .product-link
+    padding: 5px 8px 2px
+  span.stock-status
+    top: 10px
+    left: 8px
+.product-row
+  .product-link
+    padding-bottom: 5px
+  span.stock-status
+    top: 5px
+    left: 5px
+
+span.stock-status
+  font-size: .8rem
+  position: absolute
+  &.unavailable
+    color: #ef224b
+  &.available
+    color: #6fcc38
+
+@media(min-width: 768px)
+  .product-img-wrapper img
+    max-height: $height
