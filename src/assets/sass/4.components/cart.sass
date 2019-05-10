@@ -1,0 +1,44 @@
+
+.cart-product
+   display: flex
+   padding: .75rem
+   border-bottom: 1px solid #eee
+   &:first-child
+      border-top: 1px solid #eee
+   > :first-child
+      position: relative
+      min-width: fit-content
+      padding-right: 10px
+   > :nth-child(2)
+      flex-grow: 1
+   .delete
+      position: absolute
+      top: 0
+      left: 0
+
+.cart-product > * > *
+      align-self: center
+      justify-content: flex-start
+
+.cart-product-img
+   max-width: 80px
+   max-height: 80px
+   margin: 0 10px
+   img
+      width: 100%
+      height: 100%
+
+.shipping
+   padding: .5rem 0
+   label
+      transition: color .2s ease
+      &:hover
+         cursor: pointer
+         color: $link
+
+@media (min-width: 992px)
+   .cart-product-detail
+      width: 50%
+      max-width: 50%
+   .cart-product > * > *
+      justify-content: center

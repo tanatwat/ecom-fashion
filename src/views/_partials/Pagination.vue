@@ -6,7 +6,7 @@
 
     <div class="pages">
 
-      <div class="arrow" :class="{'disabled' : meta.current_page === 1}">
+      <div class="arrow" :class="{'disabled' : meta.current_page === 1}" v-show="meta.last_page > 1">
         <a v-show="meta.current_page > 1" @click.prevent="switched(meta.current_page - 1)">
           <i class="fas fa-caret-left"></i>
         </a>
@@ -18,7 +18,7 @@
         </a>
       </div>
 
-      <div class="arrow" :class="{'disabled' : meta.current_page === meta.last_page}">
+      <div class="arrow" :class="{'disabled' : meta.current_page === meta.last_page}" v-show="meta.last_page > 1">
         <a v-show="meta.current_page < meta.last_page" @click.prevent="switched(meta.current_page + 1)">
           <i class="fas fa-caret-right"></i>
         </a>

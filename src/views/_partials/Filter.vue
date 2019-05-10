@@ -2,28 +2,32 @@
   <div>
     <div class="level is-mobile">
       <div class="level-left">
-        <button class="button primary" @click.prevent="formVisible = !formVisible">
-          ตัวกรอง&nbsp;
-          <i class="fas fa-filter"></i>
-        </button>
+        <a class="button is-primary" @click.prevent="formVisible = !formVisible">
+          ค้นหาสินค้า&nbsp;
+          <i class="fas fa-search"></i>
+        </a>
       </div>
-      <div class="level-right">
+      <div class="level-right buttons">
         <button
           v-show="canToggleView"
-          class="button icon fas fa-th-list"
-          :class="{'active' : $parent.view == 'row'}"
+          class="button is-white"
+          :class="{'is-primary' : $parent.view == 'row'}"
           @click="$emit('changeView', 'row')"
-        ></button>
+        >
+          <i class="icon fas fa-th-list"></i>
+        </button>
         <button
           v-show="canToggleView"
-          class="button icon fas fa-th-large"
-          :class="{'active' : $parent.view == 'grid'}"
+          class="button is-white"
+          :class="{'is-primary' : $parent.view == 'grid'}"
           @click="$emit('changeView', 'grid')"
-        ></button>
+        >
+          <i class="icon fas fa-th-large"></i>
+        </button>
       </div>
     </div>
     <transition name="fade">
-      <div v-show="formVisible" class="box filter" style="margin-top:15px !important">
+      <div v-show="formVisible" class="box filter">
         <div class="is-flex-tablet align-form child-is-half">
           <div class="field">
             <form-input
@@ -117,29 +121,33 @@
         <transition name="fade">
           <div class="breadcrumb" v-show="activated">
             <p class="is-size-5">คุณกำลังค้นหา</p>
-            <span v-show="query.name">
-              <strong>ชื่อสินค้า</strong>
-              &nbsp;{{ query.name }}
-            </span>
+            <div v-show="query.name">
+              <span>
+                <strong>ชื่อสินค้า</strong>
+                &nbsp;{{ query.name }}
+              </span>
+            </div>
             <div v-show="query.c">
               <strong>หมวดหมู่&nbsp;</strong>
-              <span>{{ breadcrumb.category }}</span>
-              <span>{{ breadcrumb.subcategory }}</span>
-              <span>{{ breadcrumb.type }}</span>
+              <span>{{ breadcrumb.category + ' '}}</span>
+              <span>{{ breadcrumb.subcategory + ' '}}</span>
+              <span>{{ breadcrumb.type + ' '}}</span>
             </div>
-            <span
+
+            <div
               v-show="query.order"
-            >{{ query.order == 'min' ? 'ราคาต่ำสุดก่อน' : 'ราคาสูงสุดก่อน' }}</span>
+            >{{ query.order == 'min' ? 'ราคาต่ำสุดก่อน' : 'ราคาสูงสุดก่อน' }}</div>
+
             <span v-show="query.min">ราคาต่ำสุด&nbsp;{{ $number.format(query.min) }}&nbsp;</span>
             <span v-show="query.max">ราคาสูงสุด&nbsp;{{ $number.format(query.max) }}</span>
             <span class="font-green" v-show="query.dc">สินค้าลดราคาเท่านั้น</span>
           </div>
         </transition>
-        <div class="action-wrapper form-submit has-margin right">
+        <div class="action-wrapper form-submit right buttons">
           <button class="button" type="button" @click.prevent="clearFilter()">ล้างการค้นหา</button>
           <button
             type="button"
-            class="button success"
+            class="button is-success"
             @click.prevent="search(1)"
             style="margin-right:0"
           >ค้นหา</button>
@@ -147,9 +155,7 @@
       </div>
     </transition>
 
-    <p
-      style="margin-top:20px"
-    >สินค้า&nbsp;{{ $parent.meta.total_items }}&nbsp;รายการ&nbsp;ทั้งหมด&nbsp;{{ $parent.meta.last_page }}&nbsp;หน้า</p>
+    <p>สินค้า&nbsp;{{ $parent.meta.total_items }}&nbsp;รายการ&nbsp;ทั้งหมด&nbsp;{{ $parent.meta.last_page }}&nbsp;หน้า</p>
   </div>
 </template>
 
@@ -264,7 +270,7 @@ export default {
       var cleared = _.mapValues(this.query, () => null);
       this.query = cleared;
       this.query.page = 1;
-      this.search(1)
+      this.search(1);
     },
     selectCategory(category) {
       this.subcategories = category.subcategory;

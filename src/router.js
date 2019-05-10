@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Cart from "./views/Cart.vue";
 import Products from "./views/Products.vue";
+import Product from "./views/product/Product.vue";
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: "/products",
       name: "products",
       component: Products
+    },
+    {
+      path: "/product/:uid",
+      name: "product-index",
+      component: Product
     },
     {
       path: "/cart",

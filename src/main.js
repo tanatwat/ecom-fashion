@@ -2,7 +2,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import {store} from './store/store'
 import axios from "axios";
 window._ = require('lodash')
 Vue.config.productionTip = false;
@@ -36,6 +36,10 @@ if (localStorage.token) {
   jwtToken = `Bearer ${localStorage.token}`;
   clientId = localStorage.client;
   authCheck = true
+}
+
+if (localStorage.getItem("cart") === null) {
+  localStorage.setItem('cart', '[]')
 }
 
 /* AXIOS */

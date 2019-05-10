@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <div class="nav-bar w-nav">
       <div class="nav-container">
         <div class="left-side">
@@ -18,13 +17,37 @@
             <router-link to="/" class="nav-link w-nav-link">ACCOUNTS</router-link>
             <router-link to="/" class="nav-link w-nav-link">LOGIN</router-link>
           </div>
-          <router-link to="/" class="cart-button w-button">CART</router-link>
+          <router-link to="/cart" class="cart-button w-button">CART&nbsp;{{ cartCount }}</router-link>
         </div>
       </div>
     </div>
-    <router-view/>
+
+    <div class="container">
+      <!-- PAGE TITLE -->
+      <h1 class="title">Hero title</h1>
+      <h2 class="subtitle">Hero subtitle</h2>
+      <!-- ROUTER VIEW -->
+      <router-view/>
+    </div>
   </div>
 </template>
+
+<script>
+import {mapGetters, mapActions} from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({
+      cartCount: 'count'
+    })
+  },
+  methods: {
+    ...mapActions(['getCartCount'])
+  },
+  created() {
+    this.getCartCount()
+  },
+}
+</script>
 
 <style lang="sass">
 @import "./assets/sass/app.sass"

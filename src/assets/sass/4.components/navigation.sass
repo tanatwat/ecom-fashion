@@ -2,10 +2,17 @@ $nav-height-desktop: 80px
 $nav-height-mobile: 50px
 $nav-padding-desktop: 0 20px
 $nav-padding-mobile: 0 10px
+$nav-margin-desktop: 1.75rem
+$nav-margin-mobile: .75rem
 $nav-bg: #fff
 $nav-link-color: #b5b5b5
 $nav-link-color-hover: #e4bb8e
 
+.nav-bar
+  padding-top: 10px
+  padding-bottom: 10px
+  background-color: transparent
+  margin-bottom: $nav-margin-desktop
 
 .nav-container
   display: flex
@@ -13,11 +20,6 @@ $nav-link-color-hover: #e4bb8e
   flex-direction: row
   justify-content: space-between
   align-items: center
-
-.nav-bar
-  padding-top: 10px
-  padding-bottom: 10px
-  background-color: transparent
 
 .logo-wrapper
   max-width: 80px
@@ -79,6 +81,8 @@ $nav-link-color-hover: #e4bb8e
     align-items: center
 
 @media (max-width: 767px)
+  .nav-bar
+    margin-bottom: $nav-margin-mobile
   .nav-container
     padding-right: 10px
     padding-left: 10px
